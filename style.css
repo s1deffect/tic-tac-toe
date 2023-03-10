@@ -32,3 +32,10 @@
 .control {
     margin: auto;
 }
+.sqaure {
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

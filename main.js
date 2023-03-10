@@ -1,4 +1,3 @@
-console.log('hello world');
 
 const gameBoard = (function() {
     const gameBoard = ["","","", "", "", "", "", "", ""];
@@ -9,6 +8,7 @@ const gameBoard = (function() {
             div.classList="sqaure"
             document.querySelector('.game-board').appendChild(div)
         })
+        // play();
         }
 
     function reset () {
@@ -17,6 +17,7 @@ const gameBoard = (function() {
 
         function mark (ele,mark) {
             ele.textContent = mark;
+            
         }
 
     return {
@@ -37,14 +38,41 @@ function Player(name,marker) {
 
 const Game = (() => {
     const players = [];
+    let playerTurn = "x";
+    
+    function changeMark() {
+        if (playerTurn === "x") {
+            playerTurn = "o"
+        } else {
+            playerTurn = "x"
+        }
+    }
+    
     function start() {
         createPlayers(players);
         gameBoard.render();
+        play();
         console.log( players)
     }
+
+    function play () {
+        const squares = document.querySelectorAll(".sqaure");
+        squares.forEach((ele) => {
+            ele.addEventListener('click', () => {
+                if (!ele.textContent) {
+                    gameBoard.mark(ele, playerTurn);   
+                changeMark(); 
+                }
+                            
+            })
+        })
+    }
+
     function reset() {
         gameBoard.reset()
+        players.splice(0,2);
     }
+
     function gameOver() {
         
     }
@@ -66,15 +94,7 @@ function createPlayers(players) {
     // console.log(player1, player2)
 }
 
-function play () {
-    const squares = document.querySelectorAll(".square")
-    squares.forEach((ele) => {
-        console.log(ele)
-        ele.addEventListener('click', () => {
-            console.log(ele)
-        })
-    })
-}
+
 
 const startBut = document.querySelector('#start');
 startBut.addEventListener('click', Game.start);
