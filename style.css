@@ -39,3 +39,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.names {
+    display: none;
+}
+.active {
+    display: flex;
+    justify-content: space-around;
+    font-size: 40px;
+    gap: 50px;
+}
