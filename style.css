@@ -49,3 +49,10 @@
     font-size: 40px;
     gap: 50px;
 }
+input {
+    font-size: 20px;
+}
+button {
+    padding: 15px;
+    border-radius: 10px;
+}

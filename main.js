@@ -3,6 +3,9 @@ const gameBoard = (function() {
     let gameBoard = ["","","", "", "", "", "", "", ""];
 
     function render() {
+        if(document.querySelector('.game-board').innerHTML = "") {
+            return 
+        }
         gameBoard.forEach((ele,ind) => {
             const div = document.createElement('div');
             div.classList="sqaure";
@@ -58,17 +61,12 @@ const Game = (() => {
     let playerTurn = "x";
     
     function start() {
-        
         const error = createPlayers();
         if(error) { 
             return
         }
-        if (document.querySelector('.game-board').firstChild) {
-            console.log("has child")
-            gameBoard.render();
-        } else {
-            console.log("has no child")
-        }
+        gameBoard.render();
+
         play();
     }
 
